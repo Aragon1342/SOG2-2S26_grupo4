@@ -1,0 +1,12 @@
+# Dependencias para ETL y Base de Datos
+pandas>=2.0.0
+numpy>=1.24.0
+SQLAlchemy>=2.0.0
+python-dotenv>=1.0.0
+
+# Drivers de Base de Datos en la Nube
+# Para PostgreSQL (Neon, Supabase, Railway, AWS RDS):
+psycopg2-binary>=2.9.9
+# Para MySQL:
+pymysql>=1.1.0
+cryptography>=42.0.0
