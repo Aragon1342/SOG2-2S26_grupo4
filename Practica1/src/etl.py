@@ -22,8 +22,10 @@ import numpy as np
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde .env
-load_dotenv()
+import pathlib
+# Cargar variables de entorno desde .env de Practica1
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 # Configuración de Logging
 logging.basicConfig(
@@ -434,6 +436,10 @@ def find_csv_file(specified_path: Optional[str] = None) -> str:
         return specified_path
 
     candidates = [
+        str(BASE_DIR / "data" / "Venta_online_c.csv"),
+        str(BASE_DIR / "Venta_online_c.csv"),
+        "data/Venta_online_c.csv",
+        "../data/Venta_online_c.csv",
         "Venta_online_c.csv",
         "../Venta_online_c.csv",
         "ventas_2021.csv"
@@ -442,13 +448,13 @@ def find_csv_file(specified_path: Optional[str] = None) -> str:
         if os.path.exists(candidate):
             return candidate
 
-    for search_dir in [".", ".."]:
+    for search_dir in [str(BASE_DIR / "data"), str(BASE_DIR), ".", ".."]:
         if os.path.exists(search_dir):
             for f in os.listdir(search_dir):
                 if f.endswith(".csv"):
                     return os.path.join(search_dir, f)
 
-    return "Venta_online_c.csv"
+    return str(BASE_DIR / "data" / "Venta_online_c.csv")
 
 
 def run_etl(file_path: Optional[str] = None, db_url: Optional[str] = None, mode: str = "replace"):
