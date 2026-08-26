@@ -7,7 +7,7 @@
 | 1   | Bismarck Estuardo Romero Lemus    | `201708880` |
 | 2   | Christian Alexandro Aragón García | `202000308` |
 | 3   | Pedro Alejandro Zetino Paez       | `202004750` |
-| 4   | Gabriel Herrera | `202012345` |
+| 4   | Gabriel Emilio Herrera Balán      | `202201133` |
 | 5   | Samuel Aguilar       | `202012345` |
 
 ---
