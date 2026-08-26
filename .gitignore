@@ -32,3 +32,6 @@ practica1_local.db
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+# Estado de ejecución de Google ADK (sesiones y artifacts generados)
+.adk/
