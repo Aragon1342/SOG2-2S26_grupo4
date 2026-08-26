@@ -26,14 +26,15 @@ from google.adk.runners import InMemoryRunner
 from google.genai import types
 
 # Cargar configuracion
-BASE_DIR = pathlib.Path(__file__).resolve().parent
-RAIZ = BASE_DIR.parent
+PRUEBAS_DIR = pathlib.Path(__file__).resolve().parent
+PRACTICA = PRUEBAS_DIR.parent
+RAIZ = PRACTICA.parent
 if str(RAIZ) not in sys.path:
     sys.path.insert(0, str(RAIZ))
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
+if str(PRACTICA) not in sys.path:
+    sys.path.insert(0, str(PRACTICA))
 
-load_dotenv(BASE_DIR / ".env")
+load_dotenv(PRACTICA / ".env")
 
 # Importar agente y herramientas directas
 from Practica1.agente.agent import root_agent

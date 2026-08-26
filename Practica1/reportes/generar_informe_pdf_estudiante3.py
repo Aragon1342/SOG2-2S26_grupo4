@@ -14,9 +14,9 @@ from reportlab.platypus import (
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY, TA_RIGHT
 
-BASE_DIR = pathlib.Path(__file__).resolve().parent
-GRAFICAS_DIR = BASE_DIR / "graficas_eda"
-PDF_PATH = BASE_DIR / "SOG2-2S26_grupo4_Estudiante3_EDA_Tendencias.pdf"
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+GRAFICAS_DIR = BASE_DIR / "graficas" / "graficas_eda"
+PDF_PATH = pathlib.Path(__file__).resolve().parent / "SOG2-2S26_grupo4_Estudiante3_EDA_Tendencias.pdf"
 
 
 def construir_pdf():

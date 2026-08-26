@@ -35,9 +35,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
 # Configuracion de rutas
-BASE_DIR = pathlib.Path(__file__).resolve().parent
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 ENV_PATH = BASE_DIR / ".env"
-OUTPUT_DIR = BASE_DIR / "graficas_eda"
+OUTPUT_DIR = BASE_DIR / "graficas" / "graficas_eda"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 load_dotenv(ENV_PATH)
