@@ -10,3 +10,8 @@ psycopg2-binary>=2.9.9
 # Para MySQL:
 pymysql>=1.1.0
 cryptography>=42.0.0
+
+# Agente conversacional y MCP Server
+google-adk>=1.0.0
+mcp>=1.24,<2   # google-adk aún no soporta mcp 2.x
+matplotlib>=3.8.0
