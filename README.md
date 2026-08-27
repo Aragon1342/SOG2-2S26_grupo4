@@ -8,7 +8,7 @@
 | 2   | Christian Alexandro Aragón García | `202000308` |
 | 3   | Pedro Alejandro Zetino Paez       | `202004750` |
 | 4   | Gabriel Emilio Herrera Balán      | `202201133` |
-| 5   | Samuel Aguilar       | `202012345` |
+| 5   | Carlos Samuel Aguilar Acosta       | `202200131` |
 
 ---
 
