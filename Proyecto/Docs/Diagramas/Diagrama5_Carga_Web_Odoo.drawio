@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="diag5" name="5. Carga Web en Odoo">
+    <mxGraphModel dx="1022" dy="538" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="d5_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;" value="Inicio: ImportarOdooWeb.xaml" vertex="1">
+          <mxGeometry height="45" width="260" x="270" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Abrir Edge&lt;br&gt;Navegar a OdooUrl /web/login" vertex="1">
+          <mxGeometry height="45" width="300" x="250" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Ingresar credenciales (Admin)&#xa;Hacer clic en Iniciar Sesión" vertex="1">
+          <mxGeometry height="45" width="300" x="250" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Navegar a Contactos&#xa;URL: /odoo/contacts?view_type=list" vertex="1">
+          <mxGeometry height="45" width="300" x="250" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Import records -&gt; Cargar 01_clientes_empresas.xlsx&#xa;Clic en Importar (Crear Empresas matrices)" vertex="1">
+          <mxGeometry height="50" width="350" x="225" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Import records -&gt; Cargar 02_clientes_contactos.xlsx&#xa;Clic en Importar (Crear Contactos con parent_id)" vertex="1">
+          <mxGeometry height="50" width="350" x="225" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Navegar a Catálogo de Productos&#xa;URL: /odoo/inventory/products?view_type=list" vertex="1">
+          <mxGeometry height="45" width="310" x="245" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Import records -&gt; Cargar 03_productos.xlsx&#xa;Validar mapeo de campos y ejecutar Import" vertex="1">
+          <mxGeometry height="50" width="340" x="230" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Navegar a Ajustes de Inventario Físico&#xa;URL: /odoo/action-419 o /odoo/physical-inventory" vertex="1">
+          <mxGeometry height="45" width="320" x="240" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Import records -&gt; Cargar 04_inventario_cantidad_a_la_mano.xlsx&#xa;Clic en Importar (Cargar líneas con product_id y location_id)" vertex="1">
+          <mxGeometry height="50" width="400" x="200" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" value="Hacer clic en botón Apply All (Aplicar todo)&#xa;Impactar existencias reales en ubicación WH/Existencias" vertex="1">
+          <mxGeometry height="50" width="360" x="220" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="d5_12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;" value="Fin de Proceso: Carga Web Completada con Éxito" vertex="1">
+          <mxGeometry height="45" width="280" x="260" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_1" edge="1" parent="1" source="d5_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_2" edge="1" parent="1" source="d5_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_3" edge="1" parent="1" source="d5_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_4" edge="1" parent="1" source="d5_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_5" edge="1" parent="1" source="d5_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_6" edge="1" parent="1" source="d5_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_7" edge="1" parent="1" source="d5_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_8" edge="1" parent="1" source="d5_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_9" edge="1" parent="1" source="d5_9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_10" edge="1" parent="1" source="d5_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_11" edge="1" parent="1" source="d5_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;" target="d5_12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

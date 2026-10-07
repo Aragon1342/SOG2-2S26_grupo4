@@ -1,0 +1,136 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="897.2,1928" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtConfig" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="config" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtCliEmp" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtCliPer" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtPro" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtInv" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtLog" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Inicio Robot" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;=== ROBOT QUETZALMART RPA INICIADO ===&quot;]" />
+    <Assign DisplayName="Inicializar Diccionario Config" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[config]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String)()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtConfig]" DisplayName="Leer Config.xlsx" sap:VirtualizedContainerService.HintSize="449.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Settings" WorkbookPath="Config.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtConfig]" DisplayName="Llenar Diccionario Config" sap:VirtualizedContainerService.HintSize="449.6,394.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Assign DisplayName="Guardar valor config" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[config(row("Name").ToString().Trim())]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[row("Value").ToString().Trim()]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InicializarTablas" sap:VirtualizedContainerService.HintSize="449.6,145.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Workflows\InicializarTablas.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_VersionOdoo">[If(config.ContainsKey("VersionOdoo"), config("VersionOdoo"), "18")]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtCliEmp">[dtCliEmp]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtCliPer">[dtCliPer]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtPro">[dtPro]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtInv">[dtInv]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtLog">[dtLog]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcesarArchivos" sap:VirtualizedContainerService.HintSize="449.6,145.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Workflows\ProcesarArchivos.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RutaEntrada">[config("RutaEntrada")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_VersionOdoo">[If(config.ContainsKey("VersionOdoo"), config("VersionOdoo"), "18")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UbicacionInventario">[If(config.ContainsKey("UbicacionInventario"), config("UbicacionInventario"), "WH/Stock")]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtCliEmp">[dtCliEmp]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtCliPer">[dtCliPer]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtPro">[dtPro]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtInv">[dtInv]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtLog">[dtLog]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GuardarConsolidados" sap:VirtualizedContainerService.HintSize="449.6,145.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Workflows\GuardarConsolidados.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RutaSalida">[config("RutaSalida")]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtCliEmp">[dtCliEmp]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtCliPer">[dtCliPer]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtPro">[dtPro]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtInv">[dtInv]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtLog">[dtLog]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[config.ContainsKey(&quot;EjecutarImportacionWeb&quot;) AndAlso Boolean.Parse(config(&quot;EjecutarImportacionWeb&quot;))]" DisplayName="¿Ejecutar importación web en Odoo?" sap:VirtualizedContainerService.HintSize="449.6,439.2" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ImportarOdooWeb" sap:VirtualizedContainerService.HintSize="334.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Workflows\ImportarOdooWeb.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OdooUrl">[config("OdooUrl")]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OdooDb">[config("OdooDb")]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OdooUser">[config("OdooUser")]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OdooPassword">[config("OdooPassword")]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RutaSalida">[config("RutaSalida")]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_VersionOdoo">[If(config.ContainsKey("VersionOdoo"), config("VersionOdoo"), "18")]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+      <If.Else>
+        <ui:LogMessage DisplayName="Log Omitir Web" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Importación web omitida según Config.xlsx (EjecutarImportacionWeb = False). Archivos consolidados listos en la carpeta de salida.&quot;]" />
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Fin Robot" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;=== ROBOT QUETZALMART RPA FINALIZADO EXITOSAMENTE ===&quot;]" />
+  </Sequence>
+</Activity>
