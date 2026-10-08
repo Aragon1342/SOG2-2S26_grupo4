@@ -35,3 +35,14 @@ Thumbs.db
 
 # Estado de ejecución de Google ADK (sesiones y artifacts generados)
 .adk/
+
+# UiPath RPA - Configuración local con credenciales
+Proyecto/RPA/QuetzalMart_RPA/Config.xlsx
+!Proyecto/RPA/QuetzalMart_RPA/Config.example.xlsx
+
+# UiPath - Carpetas temporales y de compilación
+**/.local/
+**/.settings/
+**/.tmh/
+**/$Recycle.Bin/
+
