@@ -1,3 +1,252 @@
+# SECCIÓN 2: FUNCIONAMIENTO DE LOS MÓDULOS
+
+---
+
+## 2.1. SITIO WEB Y COMERCIO ELECTRÓNICO
+
+### Descripción General
+Los módulos **Sitio web** y **Comercio electrónico** de Odoo 18 Community permiten a QuetzalMart vender sus productos en línea desde `https://quetzalmart.store`. La tienda está integrada de forma nativa con el ERP: cada compra realizada por un cliente genera automáticamente la orden de venta, la factura, el movimiento de inventario y el registro del cliente en Contactos (CRM), sin necesidad de capturar la información dos veces.
+
+Las funcionalidades implementadas son:
+
+* **Catálogo de productos:** presentación de cada producto con imagen, descripción, precio y categoría.
+* **Carrito de compras:** permite agregar y eliminar productos, y calcula el IVA y el costo de envío.
+* **Proceso de pago:** registro de datos del cliente, selección del método de envío y pago con un proveedor en modo de prueba.
+* **Facturación automática:** al confirmarse el pago se genera la factura y se envía por correo al cliente.
+* **Cuentas de cliente:** los clientes pueden registrarse libremente o comprar como invitados.
+
+---
+
+### PASO 1: Página de Inicio del Sitio Web
+El sitio se personalizó desde el editor visual de Odoo (botón **Editar**) con la identidad de QuetzalMart: logotipo en el encabezado, portada con el botón *Comprar ahora* que dirige a la tienda, bloque dinámico de productos y pie de página con la información de contacto y la descripción de la empresa.
+
+![Captura 2.1.1 - Página de Inicio de QuetzalMart](Capturas/2.1.1.png)
+> **Captura 2.1.1:** *Página de inicio de `quetzalmart.store` con el logotipo de QuetzalMart, la portada con acceso directo a la tienda y el bloque de productos destacados.*
+
+---
+
+### PASO 2: Catálogo de Productos y Categorías
+Los productos se publican en la tienda desde **Sitio web → Comercio electrónico → Productos**. En la pestaña **Ventas** de cada producto, sección *Tienda de comercio electrónico*, se marca **Está publicado** y se asigna la categoría del sitio web. Las categorías creadas son:
+
+| Categoría | Productos |
+|---|---|
+| Bebidas | Café Quetzal Molido 454 g, Horchata en Polvo 400 g, Agua Pura, Gaseosa Cola 3 L |
+| Abarrotes | Frijol Negro Volteado 400 g, Arroz Blanco Premium 2 lb, Tortillas de Maíz (paquete 30) |
+| Lácteos | Queso Fresco 1 lb, Leche Entera 1 L |
+| Limpieza e higiene | Detergente en Polvo 1 kg, Jabón de Tocador (3 unidades) |
+
+Cada producto cuenta con imagen, precio de venta con IVA incluido y una descripción corta escrita desde el editor de la página del producto. El filtro de categorías se habilitó en la tienda (`/shop`) desde las opciones del editor.
+
+![Captura 2.1.2 - Catálogo de la Tienda en Línea](Capturas/2.1.2.png)
+> **Captura 2.1.2:** *Vista de la tienda (`/shop`) con el catálogo de productos y el filtro por categorías.*
+
+![Captura 2.1.3 - Configuración de Publicación y Categoría de un Producto](Capturas/2.1.3.png)
+> **Captura 2.1.3:** *Pestaña Ventas del producto en Odoo, mostrando las opciones **Está publicado** y **Categorías** de la sección Tienda de comercio electrónico.*
+
+![Captura 2.1.4 - Ficha de Producto](Capturas/2.1.4.png)
+> **Captura 2.1.4:** *Página de detalle de un producto con su imagen, precio, descripción y el botón para agregarlo al carrito.*
+
+---
+
+### PASO 3: Impuestos y Precios
+La compañía QuetzalMart está configurada con país **Guatemala** y moneda **Quetzal (GTQ)**. Todos los productos tienen asignado el impuesto de venta **IVA 12 %**, incluido en el precio. Por ejemplo, el *Café Quetzal Molido 454 g* tiene un precio de Q 48.00, que corresponde a Q 42.86 más Q 5.14 de IVA. De esta forma el precio que ve el cliente en la tienda es el precio final.
+
+---
+
+### PASO 4: Método de Envío
+Desde **Sitio web → Configuración → Métodos de envío** se creó el método **Envío estándar** con proveedor *Precio fijo* y costo de **Q 25.00**. El carrito agrega automáticamente este cargo al total del pedido cuando el cliente lo selecciona durante el pago.
+
+![Captura 2.1.5 - Carrito de Compras con Impuestos y Envío](Capturas/2.1.5.png)
+> **Captura 2.1.5:** *Resumen del carrito durante el pago, mostrando el subtotal, el IVA 12 %, el costo del Envío estándar y el total del pedido.*
+
+---
+
+### PASO 5: Proveedor de Pago en Modo de Prueba
+En **Sitio web → Configuración → Proveedores de pago** se activó el proveedor **Demo** en estado *Modo de prueba*. Este proveedor simula transacciones aprobadas sin cobrar dinero real, lo que permite probar el flujo completo de compra. Se desactivó la opción de *pago rápido* para que el cliente siempre complete el formulario con sus datos y el proceso de pago pase por todos sus pasos.
+
+![Captura 2.1.6 - Pantalla de Pago](Capturas/2.1.6.png)
+> **Captura 2.1.6:** *Paso de pago de la tienda con la selección del método de envío y el proveedor de pago Demo.*
+
+---
+
+### PASO 6: Cuentas de Cliente y Facturación Automática
+* **Registro libre:** en **Ajustes → Acceso del cliente** se seleccionó *Registro libre*, de modo que cualquier visitante puede crear su cuenta desde el botón *Iniciar sesión → Registrarse*. Al registrarse, el cliente recibe un correo de bienvenida.
+* **Política de facturación:** en los ajustes de Ventas se configuró *Facturar lo ordenado*, lo que permite generar la factura en el momento de la venta.
+* **Factura automática:** al confirmarse el pago en línea, Odoo genera y publica la factura, la marca como pagada y la envía por correo al cliente.
+
+![Captura 2.1.7 - Confirmación del Pedido](Capturas/2.1.7.png)
+> **Captura 2.1.7:** *Página de confirmación que el cliente ve al completar su compra.*
+
+![Captura 2.1.8 - Correo con la Factura](Capturas/2.1.8.png)
+> **Captura 2.1.8:** *Correo recibido por el cliente con la confirmación del pedido y la factura en PDF.*
+
+---
+
+### PASO 7: Integración con el ERP
+Cada compra en la tienda queda registrada automáticamente en los demás módulos de Odoo:
+
+* **Ventas:** se crea la orden de venta con el cliente, los productos, el envío y el pago.
+* **Facturación:** se genera la factura vinculada a la orden.
+* **Inventario:** se crea la entrega y se descuenta la cantidad a la mano de los productos vendidos.
+* **Contactos (CRM):** el cliente queda registrado con su historial de compras.
+
+Los carritos que no llegan a pagarse se conservan como cotizaciones y pueden consultarse en **Sitio web → Comercio electrónico → Carritos abandonados**.
+
+![Captura 2.1.9 - Orden de Venta Generada desde la Tienda](Capturas/2.1.9.png)
+> **Captura 2.1.9:** *Orden de venta creada automáticamente por una compra en línea, con los botones inteligentes de Entrega y Facturas.*
+
+---
+
+## 2.2. GOOGLE ANALYTICS 4 (GA4)
+
+### Descripción General
+La tienda en línea está integrada con **Google Analytics 4** bajo el modelo de comercio electrónico mejorado. GA4 registra el recorrido de cada visitante (qué productos ve, qué agrega al carrito, cuándo inicia el pago y cuándo compra) junto con la fuente de la que llegó y el dispositivo que utiliza. Con esta información se mide la efectividad de las campañas, la tasa de conversión, los productos más vendidos y los puntos de abandono del embudo de compra. El análisis de estos datos se presenta en el **Manual 3**.
+
+---
+
+### PASO 1: Creación de la Propiedad en GA4
+En `analytics.google.com` se creó la cuenta **QuetzalMart** con la propiedad **QuetzalMart Tienda en línea** y la siguiente configuración:
+
+* **Zona horaria:** Guatemala.
+* **Moneda:** Quetzal guatemalteco (GTQ), igual a la moneda de Odoo.
+* **Flujo de datos:** Web, URL `quetzalmart.store`, con la medición mejorada activada.
+* **Retención de datos:** 14 meses, para que las exploraciones puedan usar todo el historial.
+
+Al crear el flujo de datos, GA4 genera el **ID de medición** (formato `G-XXXXXXXXXX`) que identifica a la tienda.
+
+![Captura 2.2.1 - Flujo de Datos Web en GA4](Capturas/2.2.1.png)
+> **Captura 2.2.1:** *Detalle del flujo de datos web de la propiedad QuetzalMart con su ID de medición.*
+
+---
+
+### PASO 2: Conexión de GA4 con Odoo
+En **Sitio web → Configuración → Ajustes** se activó la opción **Google Analytics** y se ingresó el ID de medición. A partir de ese momento, Odoo inserta la etiqueta de GA4 en todas las páginas del sitio y envía automáticamente los eventos de comercio electrónico. La conexión se verificó en **Informes → Tiempo real**, donde aparecieron los usuarios activos al navegar la tienda.
+
+![Captura 2.2.2 - Configuración de Google Analytics en Odoo](Capturas/2.2.2.png)
+> **Captura 2.2.2:** *Ajustes del sitio web en Odoo con la opción Google Analytics activada y el ID de medición.*
+
+---
+
+### PASO 3: Eventos de Comercio Electrónico
+La tienda envía a GA4 los cuatro eventos requeridos del proceso de compra:
+
+| Evento | Momento en que se envía | Origen |
+|---|---|---|
+| `view_item` | El cliente abre la ficha de un producto | Odoo (automático) |
+| `add_to_cart` | El cliente agrega un producto al carrito | Odoo (automático) |
+| `begin_checkout` | El cliente inicia el proceso de pago | Código personalizado |
+| `purchase` | Se muestra la confirmación del pedido, con valor, moneda y productos | Odoo (automático) |
+
+En las pruebas se comprobó que Odoo no enviaba el evento `begin_checkout`, por lo que se agregó un fragmento de código en el sitio desde el editor (**Editar → Tema → Avanzado → Inyección de código**, al final del `<body>`). El código detecta cuando el cliente entra a las páginas de pago (`/shop/checkout` o `/shop/address`), envía el evento una sola vez por compra y se reinicia al llegar a la confirmación del pedido:
+
+```html
+<script>
+(function () {
+  var p = window.location.pathname;
+
+  // Al confirmar la compra, se reinicia para la siguiente
+  if (p.indexOf('/shop/confirmation') === 0) {
+    try { sessionStorage.removeItem('qm_begin_checkout'); } catch (e) {}
+    return;
+  }
+
+  // Al entrar al proceso de pago
+  if (p.indexOf('/shop/checkout') === 0 || p.indexOf('/shop/address') === 0) {
+    try {
+      if (sessionStorage.getItem('qm_begin_checkout')) return;
+      sessionStorage.setItem('qm_begin_checkout', '1');
+    } catch (e) {}
+
+    var intentos = 0;
+    (function enviar() {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'begin_checkout', { currency: 'GTQ' });
+      } else if (intentos++ < 20) {
+        setTimeout(enviar, 500);
+      }
+    })();
+  }
+})();
+</script>
+```
+
+Los cuatro eventos se verificaron con la extensión *Google Analytics Debugger* en **Administrar → DebugView**, realizando una compra completa en la tienda.
+
+
+![Captura 2.2.4 - Eventos en DebugView](Capturas/2.2.4.png)
+> **Captura 2.2.4:** *DebugView de GA4 mostrando la secuencia `view_item`, `add_to_cart`, `begin_checkout` y `purchase` de una compra de prueba.*
+
+![Captura 2.2.5 - Parámetros del Evento purchase](Capturas/2.2.5.png)
+> **Captura 2.2.5:** *Detalle del evento `purchase` en DebugView con los parámetros `value`, `currency` e `items`.*
+
+---
+
+### PASO 4: Evento Clave de Conversión
+En **Administrar → Eventos clave** se marcó `purchase` como **evento clave**. Esto permite a GA4 calcular la tasa de conversión, es decir, el porcentaje de usuarios que completan una compra.
+
+![Captura 2.2.6 - Evento Clave purchase](Capturas/2.2.6.png)
+> **Captura 2.2.6:** *Lista de eventos clave de la propiedad con `purchase` activado.*
+
+---
+
+### PASO 5: Audiencias
+En **Administrar → Audiencias** se crearon tres audiencias, con duración de pertenencia ajustada al límite máximo:
+
+| Audiencia | Condición | Uso para el negocio |
+|---|---|---|
+| **Compradores** | Usuarios con el evento `purchase` | Campañas de fidelización y promociones para clientes recurrentes |
+| **Carrito abandonado** (personalizada) | Incluye usuarios con `add_to_cart` y excluye de forma permanente a los que tienen `purchase` | Envío de recordatorios o cupones para recuperar ventas |
+| **Visitantes móviles** | Categoría de dispositivo = `mobile` | Campañas y mejoras de experiencia dirigidas a celulares |
+
+![Captura 2.2.7 - Audiencias Creadas](Capturas/2.2.7.png)
+> **Captura 2.2.7:** *Lista de audiencias de la propiedad QuetzalMart.*
+
+![Captura 2.2.8 - Configuración de la Audiencia Carrito Abandonado](Capturas/2.2.8.png)
+> **Captura 2.2.8:** *Editor de la audiencia personalizada Carrito abandonado, con el grupo de inclusión `add_to_cart` y el grupo de exclusión permanente `purchase`.*
+
+---
+
+### PASO 6: Exploraciones
+En la sección **Explorar** se crearon dos exploraciones:
+
+1. **Embudo de compra QuetzalMart** (exploración de embudo): mide cuántos usuarios avanzan por los pasos *Ver producto* (`view_item`) → *Agregar al carrito* (`add_to_cart`) → *Iniciar pago* (`begin_checkout`) → *Compra* (`purchase`), con la tasa de finalización y de abandono de cada paso, desglosado por categoría de dispositivo. Los pasos están configurados como *le sigue indirectamente* para respetar la navegación natural del cliente.
+2. **Análisis de ventas y tráfico QuetzalMart** (forma libre), con dos pestañas:
+   * **Fuentes y dispositivos:** filas por fuente de la sesión y columnas por categoría de dispositivo, con usuarios activos, eventos clave y total de ingresos.
+   * **Productos más vendidos:** filas por nombre del artículo, con artículos comprados e ingresos del artículo.
+
+![Captura 2.2.9 - Exploración de Embudo de Compra](Capturas/2.2.9.png)
+> **Captura 2.2.9:** *Configuración de los cuatro pasos del embudo de compra y su resultado.*
+
+![Captura 2.2.10 - Exploración de Forma Libre](Capturas/2.2.10.png)
+> **Captura 2.2.10:** *Exploración de forma libre con las pestañas de fuentes y dispositivos y de productos más vendidos.*
+
+---
+
+### PASO 7: Segmentos
+Dentro de las exploraciones se crearon ocho segmentos, guardados en la propiedad para reutilizarlos en ambas:
+
+| Tipo | Segmento | Condición |
+|---|---|---|
+| Usuarios | Usuarios compradores | Evento `purchase` |
+| Usuarios | Usuarios móviles | Categoría de dispositivo = `mobile` |
+| Usuarios | Usuarios de redes sociales | Medio de la sesión contiene `social` (Facebook e Instagram) |
+| Eventos | Vistas de producto | Evento `view_item` |
+| Eventos | Agregados al carrito | Evento `add_to_cart` |
+| Eventos | Inicios de pago | Evento `begin_checkout` |
+| Eventos | Compras | Evento `purchase` |
+| Eventos | Compras mayores a Q 100 | Evento `purchase` con parámetro `value` > 100 |
+
+Para generar tráfico de distintas fuentes se utilizaron enlaces con parámetros UTM, por ejemplo:
+`https://quetzalmart.store/shop?utm_source=facebook&utm_medium=social&utm_campaign=lanzamiento`
+
+![Captura 2.2.11 - Segmentos Creados](Capturas/2.2.11.png)
+> **Captura 2.2.11:** *Lista de segmentos de usuarios y de eventos disponibles en la exploración.*
+
+![Captura 2.2.12 - Comparación de Segmentos](Capturas/2.2.12.png)
+> **Captura 2.2.12:** *Exploración de forma libre con segmentos aplicados en Comparaciones de segmentos.*
+
+---
+
 # SECCIÓN 4: AUTOMATIZACIÓN DE PROCESOS ROBÓTICOS (RPA) CON UIPATH
 
 ---
